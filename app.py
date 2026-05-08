@@ -34,8 +34,6 @@ load_dotenv()
 
 os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_API_KEY")
 
-print(os.environ["GOOGLE_API_KEY"])
-
 
 # Initialize the DuckDuckGoSearchRun instance
 ddg_search_runner = DuckDuckGoSearchRun()
