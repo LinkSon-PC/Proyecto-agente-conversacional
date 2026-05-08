@@ -1,6 +1,7 @@
-langchain>=0.1.0
-langchain-google-genai>=0.0.1
-langchain-community>=0.0.1
-python-dotenv>=1.0.0
-gradio>=4.0.0
-langgraph>=0.0.1
+langchain==1.2.17
+langchain-google-genai==4.2.2
+langchain-community==0.4.1
+python-dotenv==1.2.2
+gradio==6.14.0
+langgraph==1.1.10
+ddgs==9.14.2

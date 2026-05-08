@@ -1,90 +1,70 @@
-# Proyecto Agente Conversacional
+---
+title: Agente Conversacional con LangChain y Gemini
+emoji: 🤖
+colorFrom: blue
+colorTo: green
+sdk: gradio
+sdk_version: "6.14.0"
+python_version: "3.10"
+app_file: app.py
+pinned: false
+---
 
-## Descripción
+# 🤖 Agente Conversacional con LangChain y Gemini
 
-Este proyecto crea un agente conversacional usando LangChain, Gemini de Google y Gradio. El agente integra herramientas para realizar búsquedas web, cálculos matemáticos y respuestas de ejemplo sobre el clima.
+Un agente conversacional inteligente que combina el poder de LangChain, Google Gemini y herramientas útiles para responder preguntas, realizar cálculos y buscar información en la web. Desarrollado con una interfaz Gradio para una experiencia de chat interactiva.
 
-## Funcionalidades
+## ✨ Características
 
-- Uso de `google_genai:gemini-2.5-flash-lite` como modelo de lenguaje.
-- Herramienta de búsqueda en internet mediante DuckDuckGo.
-- Calculadora segura para evaluar expresiones matemáticas.
-- Respuesta de clima simulado para una ciudad dada.
-- Interfaz web interactiva con Gradio para chatear con el agente.
-- Middleware de resumen para limitar la memoria de mensajes cuando el historial crece.
+- **Modelo de Lenguaje**: Utiliza `gemini-2.5-flash-lite` de Google para respuestas inteligentes
+- **Herramientas Integradas**:
+  - 🔍 Búsqueda web con DuckDuckGo
+  - 🧮 Calculadora matemática segura
+  - 🌤️ Información del clima (simulada)
+- **Interfaz Interactiva**: Chat web con Gradio
+- **Gestión de Memoria**: Middleware de resumen para mantener conversaciones largas eficientes
 
-## Requisitos
+## 🚀 Cómo Usar
 
-- Python 3.10+ recomendado
-- Paquetes principales:
-  - `langchain`
-  - `langchain-google-genai`
-  - `langchain-community`
-  - `python-dotenv`
-  - `gradio`
-  - `langgraph`
+1. Escribe tu mensaje en el cuadro de chat
+2. El agente responderá usando las herramientas disponibles según sea necesario
+3. ¡Pregunta sobre cualquier tema, realiza cálculos o busca información!
 
-## Configuración
+### Ejemplos de Preguntas
 
-1. Crea un archivo `.env` en la raíz del proyecto.
-2. Añade la clave de API de Gemini:
+- "Hola, mi nombre es Ana"
+- "Escribe un poema corto sobre el océano"
+- "¿Cómo está el clima en Ciudad de Guatemala?"
+- "¿Cuál es la raíz cuadrada de 16?"
 
-```env
-GEMINI_API_KEY=tu_api_key_aqui
-```
+## 🛠️ Detalles Técnicos
 
-### Variables de Entorno Necesarias
+### Tecnologías Usadas
 
-| Variable | Descripción | Requerida | Ejemplo |
-|----------|-------------|-----------|---------|
-| `GEMINI_API_KEY` | Clave de API de Google Gemini para usar el modelo de lenguaje | ✅ Sí | `AIwewwDxxx...` |
+- **LangChain**: Framework para agentes conversacionales
+- **Google Gemini**: Modelo de lenguaje avanzado
+- **Gradio**: Interfaz web para el chat
+- **DuckDuckGo**: Búsqueda web privada
+- **LangGraph**: Gestión de estado y memoria
 
-**Obtener la clave de API:**
-- Ve a [Google AI Studio](https://aistudio.google.com/apikey)
-- Crea una nueva clave de API
-- Cópiala y pégala en tu archivo `.env`
+### Configuración de API
 
-3. Instala las dependencias necesarias usando `pip`:
+Este Space requiere una clave de API de Google Gemini. Para configurar:
 
-```bash
-pip install -r requirements.txt
-```
+1. Ve a [Google AI Studio](https://aistudio.google.com/apikey)
+2. Crea una nueva clave de API
+3. En tu Space de Hugging Face, ve a Settings > Secrets
+4. Añade `GEMINI_API_KEY` como secreto
 
-O instala manualmente:
+### Archivos del Proyecto
 
-```bash
-pip install -U langchain langchain-google-genai python-dotenv gradio langchain-community langgraph
-```
+- `app.py`: Script principal del agente y interfaz Gradio
+- `requirements.txt`: Dependencias de Python
 
-## Uso
+## 📄 Licencia
 
-Ejecuta el script principal con:
+Este proyecto está disponible bajo la licencia MIT. Siéntete libre de adaptarlo y usarlo según tus necesidades.
 
-```bash
-python proyectoia_ml.py
-```
+---
 
-Esto iniciará la interfaz de Gradio en tu navegador. Escribe un mensaje en la caja de chat y el agente responderá usando el modelo y sus herramientas.
-
-## Ejemplos de uso
-
-- "Hi, my name is Alice"
-- "Write a short poem about the ocean"
-- "How is the weather in Guatemala City"
-- "What is the square root of 2?"
-
-## Estructura del código
-
-- `proyectoia_ml.py`: Script principal que carga el agente, define herramientas, crea la interfaz Gradio y lanza el chat.
-- `.env`: Archivo opcional para variables de entorno como la clave de API.
-
-## Notas
-
-- La función `get_weather` actualmente devuelve una respuesta fija con la consulta del clima.
-- La función `calc` permite realizar operaciones de cálculo.
-- El agente usa un `SummarizationMiddleware` para mantener el rendimiento cuando el historial de chat crece.
-- La búsqueda se realiza con DuckDuckGo a través de `DuckDuckGoSearchRun`.
-
-## Licencia
-
-Este proyecto puede adaptarse según las necesidades del usuario.
+Desarrollado con ❤️ usando Hugging Face Spaces
