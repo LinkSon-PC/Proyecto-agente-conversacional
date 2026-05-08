@@ -33,7 +33,24 @@ Este proyecto crea un agente conversacional usando LangChain, Gemini de Google y
 GEMINI_API_KEY=tu_api_key_aqui
 ```
 
-3. Instala las dependencias necesarias (puedes usar `pip` o `conda`):
+### Variables de Entorno Necesarias
+
+| Variable | Descripción | Requerida | Ejemplo |
+|----------|-------------|-----------|---------|
+| `GEMINI_API_KEY` | Clave de API de Google Gemini para usar el modelo de lenguaje | ✅ Sí | `AIwewwDxxx...` |
+
+**Obtener la clave de API:**
+- Ve a [Google AI Studio](https://aistudio.google.com/apikey)
+- Crea una nueva clave de API
+- Cópiala y pégala en tu archivo `.env`
+
+3. Instala las dependencias necesarias usando `pip`:
+
+```bash
+pip install -r requirements.txt
+```
+
+O instala manualmente:
 
 ```bash
 pip install -U langchain langchain-google-genai python-dotenv gradio langchain-community langgraph

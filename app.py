@@ -13,9 +13,22 @@ Original file is located at
 
 #!pip install python-dotenv
 
+import math
 import os
 
+# Install Gradio
+#!pip install -qU gradio
+import gradio as gr
 from dotenv import load_dotenv
+from langchain.agents import create_agent
+from langchain.agents.middleware import SummarizationMiddleware
+from langchain.tools import tool
+
+#!pip install -qU ddgs langchain-community
+from langchain_community.tools import DuckDuckGoSearchRun
+from langchain_core.messages import AIMessage, HumanMessage
+from langchain_core.runnables import RunnableConfig
+from langgraph.checkpoint.memory import InMemorySaver
 
 load_dotenv()
 
@@ -23,10 +36,6 @@ os.environ["GOOGLE_API_KEY"] = os.getenv("GEMINI_API_KEY")
 
 print(os.environ["GOOGLE_API_KEY"])
 
-from langchain.tools import tool
-
-#!pip install -qU ddgs langchain-community
-from langchain_community.tools import DuckDuckGoSearchRun
 
 # Initialize the DuckDuckGoSearchRun instance
 ddg_search_runner = DuckDuckGoSearchRun()
@@ -40,9 +49,6 @@ ddg_search_runner = DuckDuckGoSearchRun()
 def search(query: str) -> str:
     """Search the web for the given query."""
     return ddg_search_runner.run(query)
-
-
-import math
 
 
 @tool(
@@ -71,11 +77,6 @@ def get_weather(city: str) -> str:
     return f"It's always sunny in {city}!"
 
 
-from langchain.agents import create_agent
-from langchain.agents.middleware import SummarizationMiddleware
-from langchain_core.runnables import RunnableConfig
-from langgraph.checkpoint.memory import InMemorySaver
-
 checkpointer = InMemorySaver()
 
 agent = create_agent(
@@ -94,24 +95,6 @@ agent = create_agent(
 
 config: RunnableConfig = {"configurable": {"thread_id": "1"}}
 
-# agent.invoke({"messages": "hi, my name is bob"}, config)
-# agent.invoke({"messages": "write a short poem about cats"}, config)
-# agent.invoke({"messages": "now do the same but for dogs"}, config)
-# agent.invoke({"messages": "research what Gemini is"}, config)
-# final_response = agent.invoke({"messages": "what's my name?"}, config)
-# final_response["messages"][-1].pretty_print()
-
-# total_messages = len(final_response["messages"])
-# print(f"Total de mensajes: {total_messages}")
-
-# for msg in final_response["messages"]:
-#    msg.pretty_print()
-
-# Install Gradio
-#!pip install -qU gradio
-
-import gradio as gr
-from langchain_core.messages import AIMessage, HumanMessage
 
 """### Interfaz de Chat con Gradio
 
