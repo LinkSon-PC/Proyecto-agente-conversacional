@@ -34,10 +34,6 @@ else:
         "Warning: 'GEMINI_API_KEY' not found in environment variables. Please set it to use the Gemini model."
     )
 
-# Initialize the DuckDuckGoSearchRun instance
-ddg_search_runner = DuckDuckGoSearchRun()
-
-
 # Create a LangChain Tool from the DuckDuckGoSearchRun instance
 
 # Initialize the DuckDuckGoSearchRun instance
@@ -50,7 +46,15 @@ ddg_search_runner = DuckDuckGoSearchRun()
     description="Use this tool to search the internet for general knowledge or current events.",
 )
 def search(query: str) -> str:
-    """Search the web for the given query."""
+    """
+    Search the web for the given query using DuckDuckGo.
+
+    Args:
+        query (str): The search query string to look up on the internet.
+
+    Returns:
+        str: The search results from DuckDuckGo, or an error message if the search fails.
+    """
     try:
         return ddg_search_runner.run(query)
     except Exception as e:
@@ -62,7 +66,15 @@ def search(query: str) -> str:
     description="Performs arithmetic calculations. Use this for any math problems.",
 )
 def calc(expression: str) -> str:
-    """Evaluate mathematical expressions."""
+    """
+    Evaluate mathematical expressions safely using eval with restricted globals.
+
+    Args:
+        expression (str): A string containing a valid mathematical expression.
+
+    Returns:
+        str: The result of the evaluation as a string, or an error message if evaluation fails.
+    """
     # Define a safe global dictionary for eval, making math.sqrt available as sqrt()
     safe_globals = {
         "__builtins__": {},  # Restrict built-ins for security
@@ -79,7 +91,17 @@ def calc(expression: str) -> str:
 
 @tool("get_weather", description="Get the current weather for a given location.")
 def get_weather(city: str) -> str:
-    """Get weather for a given city."""
+    """
+    Get the current weather for a given city.
+
+    Note: This is a placeholder implementation that always returns sunny weather.
+
+    Args:
+        city (str): The name of the city to get weather for.
+
+    Returns:
+        str: A string indicating the weather in the specified city.
+    """
     return f"It's always sunny in {city}!"
 
 
@@ -128,6 +150,20 @@ Ahora, crearemos una función que el Gradio ChatInterface usará para interactua
 
 
 def chat_with_agent(message, history):
+    """
+    Handle chat interaction with the LangChain agent for Gradio ChatInterface.
+
+    This function processes user messages and chat history, converts them to LangChain format,
+    invokes the agent, and returns the agent's response. It handles API key validation and
+    various exceptions.
+
+    Args:
+        message (str): The current user message.
+        history (list): List of previous chat exchanges, each as [human_message, ai_message].
+
+    Returns:
+        str: The agent's response to the user's message, or an error message if something fails.
+    """
     global config  # Ensure config (thread_id) is accessible
     global GEMINI_API_KEY_LOADED_SUCCESSFULLY  # Access the global flag
 
