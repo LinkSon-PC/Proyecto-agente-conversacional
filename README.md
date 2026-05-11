@@ -14,6 +14,8 @@ pinned: false
 
 Un agente conversacional inteligente que combina el poder de LangChain, Google Gemini y herramientas útiles para responder preguntas, realizar cálculos y buscar información en la web. Desarrollado con una interfaz Gradio para una experiencia de chat interactiva.
 
+[Aplicación desplegada](https://huggingface.co/spaces/AnthonySon/agente-conversacional)
+
 ## ✨ Características
 
 - **Modelo de Lenguaje**: Utiliza `gemini-2.5-flash-lite` de Google para respuestas inteligentes
@@ -36,6 +38,16 @@ Un agente conversacional inteligente que combina el poder de LangChain, Google G
 - "Escribe un poema corto sobre el océano"
 - "¿Cómo está el clima en Ciudad de Guatemala?"
 - "¿Cuál es la raíz cuadrada de 16?"
+
+### Aplicación
+
+- Ejecución de la aplicación
+
+![Aplicacion](./assets/app.png)
+
+- Ejemplo de interacción con el agente
+
+![Ejemplo](./assets/ejemplo.png)
 
 ## 🛠️ Detalles Técnicos
 
@@ -60,6 +72,48 @@ Este Space requiere una clave de API de Google Gemini. Para configurar:
 
 - `app.py`: Script principal del agente y interfaz Gradio
 - `requirements.txt`: Dependencias de Python
+
+### Instalación y Ejecución
+
+#### Prerrequisitos
+
+- Python 3.10 o superior
+- Clave de API de Google Gemini
+
+#### Pasos de Instalación
+
+1. **Clona el repositorio**:
+   ```bash
+   git clone https://github.com/LinkSon-PC/Proyecto-agente-conversacional
+   cd proyecto-agente-conversacional
+   ```
+
+2. **Instala las dependencias**:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Configura la clave de API**:
+   - Crea un archivo `.env` en la raíz del proyecto
+   - Añade tu clave de API de Google Gemini:
+     ```
+     GEMINI_API_KEY=tu_clave_api_aqui
+     ```
+
+#### Ejecución de la Aplicación
+
+1. **Ejecuta el script principal**:
+   ```bash
+   python app.py
+   ```
+
+2. **Accede a la aplicación**:
+   - Abre tu navegador web
+   - Ve a la URL que se muestra en la terminal (generalmente `http://127.0.0.1:7860`)
+
+3. **Interactúa con el agente**:
+   - Escribe mensajes en el chat
+   - El agente responderá utilizando las herramientas disponibles
 
 ## 📄 Licencia
 
